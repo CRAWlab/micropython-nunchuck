@@ -39,6 +39,7 @@ class Nunchuck(object):
         """Requests a sensor readout from the controller and receives the
         six data bits afterwards."""
         self.i2c.writeto(self.address, b'\x00')
+        time.sleep_us(20) # Added this on 07/04/17 - TODO: Do we need it?
         self.i2c.readfrom_into(self.address, self.buffer)
 
     def __poll(self):
